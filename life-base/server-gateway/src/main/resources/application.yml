@@ -1,0 +1,26 @@
+server:
+  port: 8900
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8901/eureka/
+
+spring:
+  application:
+    name: server-gateway
+  cloud:
+    gateway:
+      routes:
+      - id: adminapi
+        uri: lb://admin-service
+        predicates:
+        - Path=/admin/**
+        filters:
+        - StripPrefix=1
+      - id: adminapi
+        uri: lb://user-service
+        predicates:
+        - Path=/user/**
+        filters:
+        - StripPrefix=1
