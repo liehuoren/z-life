@@ -1,0 +1,33 @@
+server:
+  port: 8903
+
+spring:
+  application:
+    name: server-monitor
+  security:
+    user:
+      name: user
+      password: password
+
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 10
+    health-check-url-path: /actuator/health #2.0后actuator的地址发生了变化
+    metadata-map:
+      user.name: ${spring.security.user.name}         #These two are needed so that the server
+      user.password: ${spring.security.user.password} #can access the protected client endpoints
+  client:
+    registryFetchIntervalSeconds: 10
+    serviceUrl:
+      defaultZone: http://localhost:8901/eureka/
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"  #<2>
+  endpoint:
+    health:
+      show-details: ALWAYS
+

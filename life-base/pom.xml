@@ -16,6 +16,7 @@
         <module>server-eureka</module>
         <module>server-gateway</module>
         <module>server-config</module>
+        <module>server-monitor</module>
     </modules>
 
 </project>

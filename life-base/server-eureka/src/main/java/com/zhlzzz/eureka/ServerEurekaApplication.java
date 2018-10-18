@@ -1,4 +1,4 @@
-package com.zhlzzz.servereureka;
+package com.zhlzzz.eureka;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
