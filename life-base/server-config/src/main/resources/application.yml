@@ -1,5 +1,6 @@
 server:
   port: 8902
+
 spring:
   application:
     name: server-config
@@ -7,11 +8,22 @@ spring:
     admin:
       client:
         url: http://localhost:8903/
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/liehuoren/life-config.git
+          default-label: master
+          username: liehuoren
+          password: xingkong0323
+          search-paths: /**
+      label: master
 
 eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8901/eureka/
+
 
 management:
   endpoints:

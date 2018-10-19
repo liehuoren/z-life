@@ -13,8 +13,8 @@ spring:
     web:
       client:
         enabled: true
-      sampler:
-        probability: 1.0
+    sampler:
+      probability: 1.0
   zipkin:
     base-url: http://localhost:9411/
     sender:
@@ -23,12 +23,12 @@ spring:
     gateway:
       routes:
       - id: adminapi
-        uri: lb://monitor-service
+        uri: lb://admin-service
         predicates:
-        - Path=/monitor/**
+        - Path=/admin/**
         filters:
         - StripPrefix=1
-      - id: adminapi
+      - id: userapi
         uri: lb://user-service
         predicates:
         - Path=/user/**
@@ -40,8 +40,8 @@ spring:
         url: http://localhost:8903/
 
 
-  management:
-    endpoints:
-      web:
-        exposure:
-          include: "*"
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
